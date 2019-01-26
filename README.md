@@ -9,3 +9,5 @@ This is a reddit clone that is using the following technology:
 - Apache Web Server
 
 Live website - http://chute.taylorjohannsen.com/
+
+Authentication system was from a tutorial I followed, will be a boilerplate from now on. 

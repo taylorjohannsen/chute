@@ -19,7 +19,7 @@ mongoose.connect(db.MongoURI, { useNewUrlParser: true })
     .then(() => console.log('MongoDB Connected!'))
     .catch(err => console.log(err));
 
-// EJS
+// ejs
 app.use(expressLayouts);
 app.set('view engine', 'ejs');
 
@@ -37,10 +37,10 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Connect flash
+// connect flash
 app.use(flash());
 
-// Global variables
+// global variables
 app.use(function(req, res, next) {
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');

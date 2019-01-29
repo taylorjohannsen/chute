@@ -1,0 +1,13 @@
+.mainIcon {
+    height: 160px;
+    width: 160px;
+}
+.dFlex {
+    display: flex;
+    justify-content: center;
+}
+.dColumn {
+    flex-direction: column;
+    text-align: center;
+    margin-top: 150px;
+}

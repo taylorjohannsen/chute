@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 // Load User Model
 const User = require('../models/User');
 
+// checking against mongodb for username and passwords
 module.exports = function(passport) {
     passport.use(
         new LocalStrategy({
@@ -29,7 +30,7 @@ module.exports = function(passport) {
                 .catch(err => console.log(err));
         })
     );
-
+    
     passport.serializeUser(function(user, done) {
         done(null, user.id);
     });

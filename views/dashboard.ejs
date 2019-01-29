@@ -1,4 +1,25 @@
 <h1 class="mt-4">Dashboard</h1>
+<form action="/users/post" method="POST">
+    <div class="form-group">
+      <label for="name">Username</label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        class="form-control"
+        placeholder="Title"
+      />
+      <input
+        type="text"
+        id="body"
+        name="body"
+        class="form-control"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">
+      Submit Post
+    </button>
+
 <p class="lead mb-3">Welcome <%= name %></p>
-<p class="lead mb-3">Your Password: <%= password %></p>
+<p class="lead mb-3">Your Post: <%= posts %></p>
 <a href="/users/logout" class="btn btn-secondary">Logout</a>

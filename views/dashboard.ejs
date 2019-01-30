@@ -20,6 +20,10 @@
       Submit Post
     </button>
 
-<p class="lead mb-3">Welcome <%= name %></p>
-<p class="lead mb-3">Your Post: <%= posts %></p>
 <a href="/users/logout" class="btn btn-secondary">Logout</a>
+
+<% posts.forEach(function(post) { %>
+  <h1><%= post.title %></h1>
+  <p><%= post.body %></p>
+  <p><%= post.user.name %></p>
+<% }); %>

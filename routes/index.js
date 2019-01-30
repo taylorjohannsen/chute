@@ -13,9 +13,8 @@ router.get('/', toMainpage, (req, res) => {
 
 // user dashboard page
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
-    User.findById(req.user.id).populate('posts').exec((err, user) => {
-        console.log(user.posts);
-        res.render('dashboard', user);
+    Post.find({}).populate('user', 'password name').exec((err, posts) => {
+        res.render('dashboard', {posts: posts});
     })
 })
 

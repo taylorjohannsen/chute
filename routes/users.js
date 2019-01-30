@@ -5,6 +5,7 @@ const Post = require('../models/Post');
 const bcrypt = require('bcryptjs');
 const flash = require('connect-flash');
 const passport = require('passport');
+const mongoose = require('mongoose');
 require('../app');
 
 // login page
@@ -56,9 +57,10 @@ router.post('/register', (req, res) => {
                 });        
             } else {
                 const newUser = new User({
-                    name,
-                    email,
-                    password
+                    name: name,
+                    email: email,
+                    password: password,
+                    _id: new mongoose.Types.ObjectId(),
                 });
 
                 bcrypt.genSalt(10, (err, salt) => {
@@ -82,25 +84,19 @@ router.post('/register', (req, res) => {
 router.post('/post', (req, res, next) => {
     User.findById(req.user.id, (err, user) => {
 
-        const newPost = {
+        let newPost = new Post({
             title: req.body.title,
             body: req.body.body,
             user: req.user._id
-        }
-    
-        Post.create(newPost, (err, post) => {
-            if (err) throw err;
-    
-            user.posts.push(newPost);
-
-            user.save()
-            .then(post => {
-                console.log(newPost);
-                res.redirect('/dashboard');
-    
-            })
         })
-    })
+        user.posts.push(newPost);
+        newPost.save(function(err) {
+            if (err) throw err;
+            console.log(newPost);
+            res.redirect('/dashboard');
+        })
+            
+   })
 });
 
 // login handle 

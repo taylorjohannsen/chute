@@ -20,7 +20,7 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
 
 // new post page
 router.get('/post/:id', ensureAuthenticated, (req, res) => {
-    Post.findOne({ _id: req.params.id }).populate('user', 'password name').sort({ field: 'asc', _id: -1 }).limit(1).exec((err, post) => {
+    Post.findOne({ _id: req.params.id }).populate('user', 'password name').populate('comments', 'body user').sort({ field: 'asc', _id: -1 }).limit(1).exec((err, post) => {
         res.render('post', post);
     })
 });

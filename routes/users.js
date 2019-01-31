@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
 const Post = require('../models/Post');
+const Comment = require('../models/Comment');
 const bcrypt = require('bcryptjs');
 const flash = require('connect-flash');
 const passport = require('passport');
@@ -103,6 +104,27 @@ router.post('/post', (req, res, next) => {
         }
    })
 });
+
+router.post('/comment', (req, res, next) => {
+    const { body } = req.body;
+    Post.findById(req.params.id, (err, post) => {
+        if(!body) {
+            req.flash('commenterror', 'Comment cannot be empty');
+            res.redirect('back');
+        } else {
+            let newComment = new Comment({
+                body: body,
+                user: req.user._id
+            });
+            // issue, my guess is that req.params.id isn't going anywhere, leaving this undefinded
+            post.comments.push(newComment);
+            newComment.save(function(err){
+                if (err) throw err;
+                res.redirect('back');
+            })
+        }
+    })
+})
 
 // login handle 
 router.post('/login', (req, res, next) => {

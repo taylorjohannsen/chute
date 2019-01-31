@@ -18,7 +18,11 @@ const testPost = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    }
+    },
+    comments: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Comment'
+    }]
 });
 
 const Post = mongoose.model('Post', testPost, 'posts');

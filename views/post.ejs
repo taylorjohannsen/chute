@@ -3,3 +3,22 @@
     <h1><%= title %></h1>
     <p><%= body %></p>
     <p><%= user.name %></p>
+    <% include ./partials/messages %>
+    <form action="/users/comment" method="POST">
+        <div class="form-group">
+          <input
+            type="text"
+            id="body"
+            name="body"
+            class="form-control"
+            placeholder="add comment.."
+          />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">
+          Submit Comment
+        </button>
+    </form>
+    <p><%= comments.body %></p>
+    <p><%= comments.user %></p>
+
+

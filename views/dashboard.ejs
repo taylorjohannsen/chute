@@ -1,7 +1,9 @@
 <h1 class="mt-4">Dashboard</h1>
+<a href="/users/logout" class="btn btn-secondary">Logout</a>
+<a href='/profile/<%= userid %>' class="btn btn-secondary">My Profile</a>
+<% include ./partials/messages %>
 <form action="/users/post" method="POST">
     <div class="form-group">
-      <label for="name">Username</label>
       <input
         type="text"
         id="title"
@@ -20,10 +22,12 @@
       Submit Post
     </button>
 
-<a href="/users/logout" class="btn btn-secondary">Logout</a>
 
 <% posts.forEach(function(post) { %>
-  <h1><%= post.title %></h1>
+  <a href='/post/<%= post._id %>'>  
+    <h1><%= post.title %></h1>
+  </a>
   <p><%= post.body %></p>
-  <p><%= post.user.name %></p>
+  <p><a href='profile/<%= post.user._id %>'><%= post.user.name %></a></p>
 <% }); %>
+ 

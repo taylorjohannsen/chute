@@ -18,6 +18,14 @@ const testUser = new mongoose.Schema({
         type: String,
         required: true
     },
+    desc: {
+        type: String,
+        default: 'There seems to be nothing here...'
+    },
+    image: {
+        type: String,
+        data: Buffer
+    },
     posts: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Post'

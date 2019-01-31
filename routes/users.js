@@ -47,7 +47,7 @@ router.post('/register', (req, res) => {
         User.findOne({ email: email })
         .then(user => {
             if(user) {
-                errors.push({ msg: 'Email is already registerd' });
+                errors.push({ msg: 'Email is already registered' });
                 res.render('register', {
                     errors,
                     name,
@@ -77,25 +77,30 @@ router.post('/register', (req, res) => {
                 })
             }
         });
+       
     }
 });
 
 // submit post handle
 router.post('/post', (req, res, next) => {
+    const { title, body } = req.body;
     User.findById(req.user.id, (err, user) => {
 
-        let newPost = new Post({
-            title: req.body.title,
-            body: req.body.body,
-            user: req.user._id
-        })
-        user.posts.push(newPost);
-        newPost.save(function(err) {
-            if (err) throw err;
-            console.log(newPost);
+        if(!title || !body) {
+            req.flash('posterror', 'Please fill in all fields');
             res.redirect('/dashboard');
-        })
-            
+        } else {
+            let newPost = new Post({
+                title: req.body.title,
+                body: req.body.body,
+                user: req.user._id
+            })
+            user.posts.push(newPost);
+            newPost.save(function(err) {
+                if (err) throw err;
+                res.redirect('/dashboard');
+            })    
+        }
    })
 });
 
@@ -113,6 +118,6 @@ router.get('/logout', (req, res) => {
     req.logout();
     req.flash('success_msg', 'You are logged out');
     res.redirect('/users/login');
-})
+});
 
 module.exports = router;

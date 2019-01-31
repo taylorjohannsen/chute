@@ -14,6 +14,7 @@
               class="form-control"
               placeholder="Enter Name"
               value="<%= typeof name != 'undefined' ? name : '' %>"
+              onkeypress="return noSpace(event)"
             />
           </div>
           <div class="form-group">
@@ -25,6 +26,7 @@
               class="form-control"
               placeholder="Enter Email"
               value="<%= typeof email != 'undefined' ? email : '' %>"
+              onkeypress="return noSpace(event)"
             />
           </div>
           <div class="form-group">
@@ -36,6 +38,7 @@
               class="form-control"
               placeholder="Create Password"
               value="<%= typeof password != 'undefined' ? password : '' %>"
+              onkeypress="return noSpace(event)"
             />
           </div>
           <div class="form-group">
@@ -47,6 +50,7 @@
               class="form-control"
               placeholder="Confirm Password"
               value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
+              onkeypress="return noSpace(event)"
             />
           </div>
           <button type="submit" class="btn btn-primary btn-block">

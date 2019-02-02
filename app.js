@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const db = require('./config/keys');
 const flash = require('connect-flash');
 const session = require('express-session');
+const bodyParser = require('body-parser');
 const passport = require('passport');
 const path = require('path');
 require('./config/passport')(passport);
@@ -25,10 +26,12 @@ app.set('view engine', 'ejs');
 
 // bodyparser
 app.use(express.urlencoded({extended: false}));
+app.use(bodyParser.json()); 
+app.use(bodyParser.urlencoded({ extended: true })); 
 
 // express session
 app.use(session({
-    secret: 'secret',
+    secret: 'g7733477a',
     resave: true,
     saveUninitialized: true,
 }));

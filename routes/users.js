@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const bodyParser = require('body-parser');
 const User = require('../models/User');
 const Post = require('../models/Post');
 const Comment = require('../models/Comment');
@@ -105,7 +106,8 @@ router.post('/post', (req, res, next) => {
    })
 });
 
-router.post('/comment', (req, res, next) => {
+// submit comment handle
+router.post('/comment/:id', (req, res, next) => {
     const { body } = req.body;
     Post.findById(req.params.id, (err, post) => {
         if(!body) {
@@ -113,18 +115,19 @@ router.post('/comment', (req, res, next) => {
             res.redirect('back');
         } else {
             let newComment = new Comment({
-                body: body,
-                user: req.user._id
-            });
-            // issue, my guess is that req.params.id isn't going anywhere, leaving this undefinded
+                author: req.user._id,
+                content: body,
+                _id: new mongoose.Types.ObjectId(),
+            })
             post.comments.push(newComment);
-            newComment.save(function(err){
+
+            post.save(function(err){
                 if (err) throw err;
-                res.redirect('back');
+                res.redirect('/dashboard');
             })
         }
     })
-})
+});
 
 // login handle 
 router.post('/login', (req, res, next) => {

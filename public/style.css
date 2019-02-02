@@ -11,3 +11,6 @@
     text-align: center;
     margin-top: 150px;
 }
+.nDisplay {
+    display: none;
+}

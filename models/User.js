@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 require('./Post')
 
 // mongodb user model
-const testUser = new mongoose.Schema({
+const newUser = new mongoose.Schema({
 
     _id: mongoose.Schema.Types.ObjectId,
 
@@ -22,22 +22,14 @@ const testUser = new mongoose.Schema({
         type: String,
         default: 'There seems to be nothing here...'
     },
-    image: {
-        type: String,
-        data: Buffer
-    },
     posts: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Post'
-    }],
-    comments: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Comment'
     }]
 });
 
 
 
-const User = mongoose.model('User', testUser, 'users');
+const User = mongoose.model('User', newUser, 'users');
 
 module.exports = User;

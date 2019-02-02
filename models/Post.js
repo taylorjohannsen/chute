@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 require('./User');
+require('./Comment');
 
 // mongodb post model
 const testPost = new mongoose.Schema({
@@ -24,6 +25,7 @@ const testPost = new mongoose.Schema({
         ref: 'Comment'
     }]
 });
+
 
 const Post = mongoose.model('Post', testPost, 'posts');
 

@@ -2,9 +2,14 @@
     <h1>New Post:</h1>
     <h1><%= title %></h1>
     <p><%= body %></p>
-    <p><%= user.name %></p>
+
+    <% comments.forEach(function(comment) { %>
+      <h1><%= comment._id %></h1>
+    <% }); %>
+   
+
     <% include ./partials/messages %>
-    <form action="/users/comment" method="POST">
+    <form action="/users/comment/<%= _id %>" method="POST">
         <div class="form-group">
           <input
             type="text"
@@ -18,7 +23,9 @@
           Submit Comment
         </button>
     </form>
-    <p><%= comments.body %></p>
-    <p><%= comments.user %></p>
+    
+   
 
+
+     
 

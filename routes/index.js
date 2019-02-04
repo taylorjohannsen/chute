@@ -21,12 +21,9 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
 
 // new post page
 router.get('/post/:id', ensureAuthenticated, (req, res) => {
-    Post.findOne({ _id: req.params.id }).populate({ path: 'comment', populate: { path: 'user'}}).sort({ field: 'asc', _id: -1 }).exec((err, post) => {
+    Post.findById(req.params.id).populate({path: 'comment', model: 'Comment'}).exec((err, post) => {
+        if (err) throw err;
         console.log(post.comments);
-        // Issue - title's comming out undefined but ._id's do not. 
-        post.comments.forEach(function(comment) {
-            console.log(comment.date);
-        })
         res.render('post', post);
     })
 });

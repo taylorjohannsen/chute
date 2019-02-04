@@ -5,6 +5,8 @@
 
     <% comments.forEach(function(comment) { %>
       <h1><%= comment._id %></h1>
+      <h1><%= comment.content %></h1>
+      <h1><%= comment.author %></h1>
     <% }); %>
    
 
@@ -13,8 +15,8 @@
         <div class="form-group">
           <input
             type="text"
-            id="body"
-            name="body"
+            id="content"
+            name="content"
             class="form-control"
             placeholder="add comment.."
           />

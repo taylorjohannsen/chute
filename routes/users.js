@@ -95,7 +95,8 @@ router.post('/post', (req, res, next) => {
             let newPost = new Post({
                 title: req.body.title,
                 body: req.body.body,
-                user: req.user._id
+                user: req.user._id,
+                _id: new mongoose.Types.ObjectId(),
             })
             user.posts.push(newPost);
             newPost.save(function(err) {
@@ -108,22 +109,23 @@ router.post('/post', (req, res, next) => {
 
 // submit comment handle
 router.post('/comment/:id', (req, res, next) => {
-    const { body } = req.body;
     Post.findById(req.params.id, (err, post) => {
-        if(!body) {
+        if(!req.body.content) {
             req.flash('commenterror', 'Comment cannot be empty');
             res.redirect('back');
         } else {
-            let newComment = new Comment({
-                author: req.user._id,
-                content: body,
+            let myComment = new Comment({
+                content: req.body.content,
+                author: req.user.id,
                 _id: new mongoose.Types.ObjectId(),
-            })
-            post.comments.push(newComment);
+                post: post._id
+            });
+            
+            post.comments.push(myComment);
 
-            post.save(function(err){
+            myComment.save(function(err){
                 if (err) throw err;
-                res.redirect('/dashboard');
+                res.redirect('back');
             })
         }
     })

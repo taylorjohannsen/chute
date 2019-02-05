@@ -3,7 +3,6 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Post = require('../models/Post');
 const User = require('../models/User');
-const Comment = require('../models/Comment');
 const { ensureAuthenticated } = require('../config/auth');
 const { toMainpage } = require('../config/mainpage');
 
@@ -21,18 +20,20 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
 
 // new post page
 router.get('/post/:id', ensureAuthenticated, (req, res) => {
-    Post.findById(req.params.id).populate({path: 'comment', model: 'Comment'}).exec((err, post) => {
+    Post.findOne({ _id: req.params.id })
+    .populate('comments.author').sort({date: -1}).exec((err, post) => {
         if (err) throw err;
-        console.log(post.comments);
         res.render('post', post);
     })
 });
 
 // profile page
 router.get('/profile/:id', ensureAuthenticated, (req, res) => {
-    User.findOne({ _id: req.params.id }).populate('post').sort({ field: 'asc', _id: -1 }).exec((err, user) => {
-        res.render('profile', user);
-    })
+    User.findOne({ _id: req.params.id }).exec((err, user) => {
+        Post.find({ user: user }).sort({date: -1}).exec((err, posts) => {
+            res.render('profile', { user: user, posts: posts})
+        });
+    });
 });
 
 

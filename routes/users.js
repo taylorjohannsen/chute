@@ -3,11 +3,11 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const User = require('../models/User');
 const Post = require('../models/Post');
-const Comment = require('../models/Comment');
 const bcrypt = require('bcryptjs');
 const flash = require('connect-flash');
 const passport = require('passport');
 const mongoose = require('mongoose');
+const deepPopulate = require('mongoose-deep-populate');
 require('../app');
 
 // login page
@@ -114,16 +114,17 @@ router.post('/comment/:id', (req, res, next) => {
             req.flash('commenterror', 'Comment cannot be empty');
             res.redirect('back');
         } else {
-            let myComment = new Comment({
+            let myComment = ({
                 content: req.body.content,
                 author: req.user.id,
-                _id: new mongoose.Types.ObjectId(),
-                post: post._id
+                post: post._id,
+                _id: new mongoose.Types.ObjectId()
             });
             
             post.comments.push(myComment);
+            post.markModified('comments');
 
-            myComment.save(function(err){
+            post.save(function(err) {
                 if (err) throw err;
                 res.redirect('back');
             })

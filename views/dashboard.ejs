@@ -1,6 +1,7 @@
 <h1 class="mt-4">Dashboard</h1>
 <a href="/users/logout" class="btn btn-secondary">Logout</a>
 <a href='/profile/<%= userid %>' class="btn btn-secondary">My Profile</a>
+<a href='/account/<%= userid %>' class="btn btn-secondary">Account</a>
 <% include ./partials/messages %>
 <form action="/users/post" method="POST">
     <div class="form-group">
@@ -29,6 +30,8 @@
     <h1><%= post.title %></h1>
   </a>
   <p><%= post.body %></p>
+  <p><%= post.date.toDateString(); %></p>
+  <img class='profPicture' src="<%= post.user.image %>">
   <p><a href='profile/<%= post.user._id %>'><%= post.user.name %></a></p>
 <% }); %>
  

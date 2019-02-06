@@ -10,6 +10,10 @@ const newUser = new mongoose.Schema({
         type: String,
         required: true
     },
+    image: {
+        type: String,
+        default: '../public/pictures/default.png' 
+    },
     email: {
         type: String,
         required: true

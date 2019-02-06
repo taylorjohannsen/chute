@@ -7,7 +7,8 @@ const bcrypt = require('bcryptjs');
 const flash = require('connect-flash');
 const passport = require('passport');
 const mongoose = require('mongoose');
-const deepPopulate = require('mongoose-deep-populate');
+const multer = require('multer');
+const path = require('path');
 require('../app');
 
 // login page
@@ -130,6 +131,47 @@ router.post('/comment/:id', (req, res, next) => {
             })
         }
     })
+});
+
+// multer setup
+const storage = multer.diskStorage({
+    destination: './public/pictures',
+    filename: function(req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    }
+});
+
+const upload = multer({
+    storage: storage,
+    limits: { fileSize: 1000000 },
+    fileFilter: function(req, file, cb) {
+        checkFileType(file, cb);
+    }
+}).single('myImage');
+
+function checkFileType(file, cb) {
+    const filetypes = /jpeg|jpg|png|gif/;
+    const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+    const mimetype = filetypes.test(file.mimetype);
+
+    if (mimetype && extname) {
+        return cb(null, true);
+    } else {
+        cb('Error - Images Only!');
+    }
+}
+
+// submit photo handle
+router.post('/upload', (req, res, next) => {
+    upload(req, res, (err) => {
+        if(err) throw err;
+        User.updateOne({ _id: req.user.id }, {
+            image: ('../' + req.file.path)
+        }, { new: true }, (err, user) => {
+            if (err) throw err;
+            res.redirect('/profile/' + req.user.id);
+        });
+    });
 });
 
 // login handle 

@@ -28,6 +28,10 @@ const newPost = new mongoose.Schema({
         author: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
+        },
+        timestamp: {
+            type: Date,
+            default: Date.now
         }
     }]
 });

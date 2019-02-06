@@ -2,6 +2,8 @@
     <h1>New Post:</h1>
     <h1><%= title %></h1>
     <p><%= body %></p>
+    <img class='profPicture' src="<%= user.image %>">
+    <a href="/profile/<%= user._id %>"><%= user.name %></a>
     <% include ./partials/messages %>
     <form action="/users/comment/<%= _id %>" method="POST">
         <div class="form-group">
@@ -19,8 +21,9 @@
     </form>
     <% comments.forEach(function(comment) { %>
       <h1><%= comment.content %></h1>
+      <img class='profPicture' src="<%= comment.author.image %>">
       <a href="/profile/<%= comment.author._id %>"><%= comment.author.name %></a>
-      <h1><%= comment.date %></h1>
+      <p><%= comment.timestamp.toDateString(); %></p>
     <% }); %>
      
 

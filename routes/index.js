@@ -9,22 +9,22 @@ const { toMainpage } = require('../config/mainpage');
 // landing page 
 router.get('/', toMainpage, (req, res) => {
     res.render('mainpage');
-})
+});
 
 // user dashboard page
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
-    Post.find({}).populate('user', 'password name').sort({date: -1}).exec((err, posts) => {
+    Post.find({}).populate('user').sort({date: -1}).exec((err, posts) => {
         res.render('dashboard', {posts: posts, userid: req.user.id});
-    })
+    });
 });
 
 // new post page
 router.get('/post/:id', ensureAuthenticated, (req, res) => {
     Post.findOne({ _id: req.params.id })
-    .populate('comments.author').sort({date: -1}).exec((err, post) => {
+    .populate('comments.author').populate('user').sort({date: -1}).exec((err, post) => {
         if (err) throw err;
         res.render('post', post);
-    })
+    });
 });
 
 // profile page
@@ -33,6 +33,14 @@ router.get('/profile/:id', ensureAuthenticated, (req, res) => {
         Post.find({ user: user }).sort({date: -1}).exec((err, posts) => {
             res.render('profile', { user: user, posts: posts})
         });
+    });
+});
+
+// my account page
+router.get('/account/:id', ensureAuthenticated, (req, res) => {
+    User.findOne({ _id: req.params.id }).exec((err, user) => {
+        if (err) throw err;
+        res.render('account', user);
     });
 });
 

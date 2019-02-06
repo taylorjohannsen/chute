@@ -1,14 +1,28 @@
 <a href="/dashboard">Go back</a>
 
+<% include ./partials/messages %>
 <form action="/users/upload" method="POST" enctype="multipart/form-data">
   <div class="file-field input-field">
     <div class="btn grey">
       <span>Image</span>
       <input name="myImage" type="file">
     </div>
-    <div class="file-path-wrapper">
-      <input class="file-path validate" type="text">
-    </div>
   </div>
   <button type="submit" class="btn">Submit</button>
+</form>
+
+<form action="/users/update" method="POST">
+  <div class="form-group">
+    <span>Edit description: </span>
+    <input
+      type="text"
+      id="desc"
+      name="desc"
+      class="form-control"
+      value="<%= desc %>"
+    >
+  </div>
+  <button type="submit" class="btn btn-primary btn-block">
+    Submit
+  </button>
 </form>

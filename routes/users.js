@@ -164,14 +164,34 @@ function checkFileType(file, cb) {
 // submit photo handle
 router.post('/upload', (req, res, next) => {
     upload(req, res, (err) => {
-        if(err) throw err;
-        User.updateOne({ _id: req.user.id }, {
-            image: ('../' + req.file.path)
-        }, { new: true }, (err, user) => {
+        if (err) {
+            req.flash('photoerror', 'Incorrect file type - .jpeg, .png, .jpg, .gif only ');
+            res.redirect('back');
+        } else {
+            User.updateOne({ _id: req.user.id }, {
+                image: ('../' + req.file.path)
+            }, { new: true }, (err, user) => {
+                if (err) throw err;
+                req.flash('photosuccess', 'Photo uploaded successfully!');
+                res.redirect('/profile/' + req.user.id);
+            });    
+        }
+    });
+});
+
+// update description handle
+router.post('/update', (req, res, next) => {
+    const { desc } = req.body;
+    User.updateOne({ _id: req.user.id }, {
+        desc: desc
+    }, {
+        new: true
+    },
+        (err, user) => {
             if (err) throw err;
+            req.flash('descsuccess', 'Description updated successfully!');
             res.redirect('/profile/' + req.user.id);
         });
-    });
 });
 
 // login handle 

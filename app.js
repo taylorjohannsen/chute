@@ -51,6 +51,9 @@ app.use(function(req, res, next) {
   res.locals.error = req.flash('error');
   res.locals.posterror = req.flash('posterror');
   res.locals.commenterror = req.flash('commenterror');
+  res.locals.photoerror = req.flash('photoerror');
+  res.locals.photosuccess = req.flash('photosuccess');
+  res.locals.descsuccess = req.flash('descsuccess');
   next();
 });
 

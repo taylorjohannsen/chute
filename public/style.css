@@ -20,3 +20,119 @@
     border-radius: 30px;
     float: left;
 }
+body {
+    color: rgb(255, 255, 255);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 15px;
+    background-color: #0b0c10;
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+input {
+    height: 20px;
+    width: 300px;
+    border-radius: 5px;
+    border: 0.5px solid rgba(66, 133, 140, 0.568);
+    font-size: 15px;
+    padding: 5px;
+    padding-left: 10px;
+    background-color: #0b0c10;
+    color: white;
+}
+input:focus {
+    border: 0.5px solid black;
+    box-shadow: 5x 5px black;
+    outline: 0;
+    background-color: rgba(189, 185, 185, 0.185);
+}
+button {
+    background-color: #35393C;
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+    outline: 0;
+    color: white;
+    font-size: 18px;
+}
+button:hover {
+    transition: 0.3s ease all;
+    background-color: rgb(120, 129, 134);
+}
+.loginCont {
+    background-color: #1F2833;
+    padding: 20px;
+    width: 400px;
+    border: 1px solid rgba(255, 255, 255, 0.507);
+    display: flex;
+    flex-direction: column;
+}
+.logFlex {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-bottom: 100px;
+}
+.Login {
+    font-size: 30px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+.iconFlex {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+.columnFlex {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.mainText {
+    font-size: 50px;
+    color: white;
+    padding-right: 8px;
+}
+.inputFlex {
+    padding-bottom: 20px;
+}
+.Submit {
+    margin-bottom: 20px;
+    width: 100px;
+}
+a {
+    color: #66fcf1;
+}
+a:hover {
+    color: #c5c6c7;
+}
+.formText {
+    padding: 10px;
+    font-size: 17px;
+}
+.noAccount {
+    text-align: right;
+}
+.footer {
+    width: 100%;
+    height: 70px;
+    background-color: rgba(85, 84, 84, 0.322);
+    bottom: 0;
+    position: absolute;
+    margin-top: -40px;
+}
+.me {
+    color: grey;
+    text-decoration: none;
+    margin-left: 100px;
+}
+.name {
+    margin-left: 100px;
+    font-size: 15px;
+}
+.container {
+    padding-bottom: 70px;
+    position: relative;
+    overflow: hidden;
+}

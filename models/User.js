@@ -12,7 +12,7 @@ const newUser = new mongoose.Schema({
     },
     image: {
         type: String,
-        default: '../public/pictures/default.png' 
+        default: '../public/watericon.png' 
     },
     email: {
         type: String,

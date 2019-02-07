@@ -1,37 +1,29 @@
-<h1 class="mt-4">Dashboard</h1>
-<a href="/users/logout" class="btn btn-secondary">Logout</a>
-<a href='/profile/<%= userid %>' class="btn btn-secondary">My Profile</a>
-<a href='/account/<%= userid %>' class="btn btn-secondary">Account</a>
-<% include ./partials/messages %>
-<form action="/users/post" method="POST">
-    <div class="form-group">
-      <input
-        type="text"
-        id="title"
-        name="title"
-        class="form-control"
-        placeholder="Title"
-      />
-      <input
-        type="text"
-        id="body"
-        name="body"
-        class="form-control"
-      />
+<div class="navBar">
+  <a href='/' class='noDec'>
+    <div class="dashLogo">
+        <img class="dashIcon" src='../public/watericon.png'>
+        <div class='dashText'>chute</div>
     </div>
-    <button type="submit" class="btn btn-primary btn-block">
-      Submit Post
-    </button>
-</form>
-
-
-<% posts.forEach(function(post) { %>
-  <a href='/post/<%= post._id %>'>  
-    <h1><%= post.title %></h1>
   </a>
-  <p><%= post.body %></p>
-  <p><%= post.date.toDateString(); %></p>
-  <img class='profPicture' src="<%= post.user.image %>">
-  <p><a href='profile/<%= post.user._id %>'><%= post.user.name %></a></p>
-<% }); %>
- 
+  <div class='navLink'>
+    <a class='noDec' href='/profile/<%= userid %>'>
+      <div class='linkText'>Profile</div>
+    </a>
+    <div> - </div>
+    <a class='noDec' href='/account/<%= userid %>'>
+      <div class='linkText'>Account</div>
+    </a>
+    <div> - </div>
+    <a class='noDec' href='/users/logout'>
+      <div class='linkText'>Logout</div>
+    </a>
+  </div>
+</div>
+<div class='botBorder'></div>
+<div class='mainCont'>
+  <div class='meCont'></div>
+  <div class='content'>
+    <div class='newChute'></div>
+    <div class="allChute"></div>
+  </div>
+</div>

@@ -1,10 +1,12 @@
 .mainIcon {
     height: 160px;
     width: 160px;
+    text-align: center;
 }
 .dFlex {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 .dColumn {
     flex-direction: column;
@@ -13,6 +15,9 @@
 }
 .nDisplay {
     display: none;
+}
+.welcome {
+    font-size: 70px;
 }
 .profPicture {
     height: 65px;
@@ -66,12 +71,14 @@ button:hover {
     border: 1px solid rgba(255, 255, 255, 0.507);
     display: flex;
     flex-direction: column;
+    border-radius: 10px;
 }
 .logFlex {
     display: flex;
     justify-content: center;
     flex-direction: row;
     margin-bottom: 100px;
+    animation: 1s ease-out 0s 1 slideInBottom;
 }
 .Login {
     font-size: 30px;
@@ -83,16 +90,40 @@ button:hover {
     justify-content: center;
     margin-top: 50px;
     margin-bottom: 30px;
+    animation: 1s ease-out 0s 1 slideInLeft;
+    flex-wrap: wrap;
 }
+
+@keyframes slideInLeft {
+    0% {
+        transform: translateX(-300px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@keyframes slideInBottom {
+    0% {
+        transform: translateX(0px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
 .columnFlex {
     display: flex;
     flex-direction: column;
     text-align: center;
 }
 .mainText {
-    font-size: 50px;
+    font-size: 70px;
     color: white;
-    padding-right: 8px;
+
 }
 .inputFlex {
     padding-bottom: 20px;
@@ -132,7 +163,90 @@ a:hover {
     font-size: 15px;
 }
 .container {
-    padding-bottom: 70px;
-    position: relative;
-    overflow: hidden;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.noDec {
+    text-decoration: none;
+}
+.smallText {
+    font-size: 25px;
+}
+.smallerText {
+    font-size: 15px;
+    padding-bottom: 30px;
+
+}
+.smallLink {
+    padding: 10px;
+    text-decoration: none;
+    border: 1px solid white;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+.navBar {
+    height: 65px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.navLink {
+    display: flex;
+    flex-direction: row;
+    margin-top: 23px;
+    font-size: 17px;
+}
+.botBorder {
+    border-top: 0.5px solid rgba(255, 255, 255, 0.603);
+    margin-bottom: 30px;
+}
+.dashIcon {
+    height: 40px;
+    width: 40px;
+
+}
+.dashLogo{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+.dashText {
+    font-size: 30px;
+    color: white;
+}
+.linkText {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.mainCont {
+    margin-left: 10%;
+    margin-right: 10%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.meCont {
+    width: 28%;
+    height: 400px;
+    background-color: #1F2833;
+    border-radius: 10px;
+}
+.content {
+    width: 70%;
+}
+.newChute {
+    height: 200px;
+    background-color: #1F2833;
+    background-color: #1F2833;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+.allChute {
+    background-color: #1F2833;
+    border-radius: 10px;
+    height: 600px;
 }

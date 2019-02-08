@@ -222,36 +222,56 @@ a:hover {
     padding-left: 10px;
 }
 .mainCont {
-    margin-left: 10%;
-    margin-right: 10%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 100%;
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.274);
 }
 .meCont {
     width: 28%;
-    height: 400px;
+    min-height: 100%;
     background-color: #1F2833;
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.253);
+    overflow: hidden;
 }
 .content {
     width: 70%;
 }
 .newChute {
-    height: 200px;
+    height: 100%;
     background-color: #1F2833;
     background-color: #1F2833;
     border-radius: 10px;
     margin-bottom: 25px;
     border: 1px solid rgba(255, 255, 255, 0.253);
+    overflow: hidden;
+}
+.formSub {
+    height: 100%;
+    overflow: hidden;
 }
 .allChute {
-    background-color: #1F2833;
+    background: transparent; 
+    overflow: hidden;
+    width: 100%;
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    border: 6px solid #1F2833;
     border-radius: 10px;
-    height: 600px;
-    border: 1px double rgba(255, 255, 255, 0.253);
+}
+.allFlex {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 .dashPicture {
     height: 100px;
@@ -273,9 +293,89 @@ a:hover {
 }
 .recPost {
     padding-left: 10px;
-    width: 200px;
+    width: 90%;
+    font-size: 13px;
 }
 .userEmail {
     font-size: 13px;
     font-weight: 100;
+}
+.form-group {
+    padding-left: 10px;
+}
+.formTitle {
+    width: 50%;
+    margin-bottom: 10px;
+}
+.formBody {
+    width: 95%;
+    max-width: 95%;
+    height: 210px;
+    border-radius: 5px;
+    border: 0.5px solid rgba(66, 133, 140, 0.568);
+    font-size: 15px;
+    padding: 5px;
+    padding-left: 10px;
+    background-color: #0b0c10;
+    color: white;
+}
+.submitPost {
+    float: right;
+    margin-right: 30px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+.formBody:focus {
+    border: 0.5px solid black;
+    box-shadow: 5x 5px black;
+    outline: 0;
+    background-color: rgba(189, 185, 185, 0.185);
+}
+.chuteText {
+    font-size: 15px;
+    padding: 12px;
+}
+.underLine {
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.479);
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-left: 5px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.eachPost {
+    padding: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+}
+.postPicture {
+    height: 80px;
+    width: 80px;
+    border-radius: 20px;
+    padding: 10px;
+}
+.postBody {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.overFlow {
+    max-height: 70px;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    white-space: wrap;
+    overflow: hidden;
+}
+.postTitle {
+    font-size: 30px;
+    padding-bottom: 10px;
+}
+.totalCom {
+    font-size: 13px;
+    padding-top: 20px;
 }

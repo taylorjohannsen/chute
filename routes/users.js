@@ -102,7 +102,7 @@ router.post('/post', (req, res, next) => {
             user.posts.push(newPost);
             newPost.save(function(err) {
                 if (err) throw err;
-                res.redirect('/dashboard');
+                res.redirect('/post/' + newPost._id);
             })    
         }
    })

@@ -27,21 +27,57 @@
 <div class='mainCont'>
   <div class='meCont'>
     <div class='picCont'>
-      <img class='dashPicture' src="<%= user.image %>">
+      <a class='noDec' href='/profile/<%= user._id %>'>
+        <img class='dashPicture' src="<%= user.image %>">
+      </a>
       <div class='user'>
         <div class='userName'><%= user.name %></div>    
         <div class='userEmail'><%= user.email %></div>        
       </div>
     </div>
-    <div class="recText">Recent Posts:</div>
+    <div class="recText">Recent Chutes:</div>
     <% userposts.forEach(function(post) { %>
       <a class='noDec' href='/post/<%= post._id %>'>  
-        <div class='recPost'><%= post.title %> - <%= post.date.toDateString(); %></div>
+        <div class='recPost underLine'><%= post.title %> - <%= post.date.toDateString(); %></div>
       </a>
     <% }); %>
   </div>
   <div class='content'>
-    <div class='newChute'></div>
-    <div class="allChute"></div>
+    <div class='newChute'>
+      <div class="chuteText">new chute:</div>
+      <form class='formSub' action='/users/post' method="POST">
+        <div class="form-group">
+            <input type="text" id="title" name="title" class="formTitle" placeholder="Chute Title" autocomplete="off"/>
+            <br>
+            <textarea type="text" id="body" name="body" class="formBody" autocomplete="off" placeholder="What is happening?"></textarea>
+            <br>
+            <button type="submit" class="submitPost">
+              Submit Chute
+            </button>          
+          </div>
+      </form>
+    </div>
   </div>
+</div>
+<div class='allFlex'>
+    <% posts.forEach(function(post) { %>
+    <div class="allChute">
+      <div class='eachPost'>
+        <div class="columnFlex">
+          <a class='noDec' href='/profile/<%= post.user._id %>'>
+            <img class='postPicture' src="<%= post.user.image %>">
+          </a>
+          <a class='noDec' href='profile/<%= post.user._id %>'><%= post.user.name %></a>
+          <div><%= post.date.toDateString(); %></div>    
+        </div>
+          <div class="columnFlex postBody">
+            <a class='noDec' href='/post/<%= post._id %>'>  
+              <div class='postTitle'><%= post.title %></div>
+            </a>
+            <div class='overFlow'><%= post.body %></div>
+            <div class='totalCom'>Comments: <br><%= post.comments.length; %></div>
+          </div>
+      </div>
+    </div>
+  <% }); %>
 </div>

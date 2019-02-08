@@ -14,8 +14,8 @@ router.get('/', toMainpage, (req, res) => {
 // user dashboard page
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
     User.findOne({ _id: req.user.id }).populate('posts').exec((err, user) => {
-        Post.find({}).populate('user').sort({date: -1}).exec((err, posts) => {
-            Post.find({ user: user }).sort({date: -1}).limit(8).exec((err, userposts) => {
+        Post.find({}).populate('user').sort({date: -1}).limit(20).exec((err, posts) => {
+            Post.find({ user: user }).sort({date: -1}).limit(4).exec((err, userposts) => {
                 res.render('dashboard', {posts: posts, user: user, userposts: userposts});
             });
         });    

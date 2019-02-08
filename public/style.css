@@ -234,6 +234,7 @@ a:hover {
     height: 400px;
     background-color: #1F2833;
     border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.253);
 }
 .content {
     width: 70%;
@@ -244,9 +245,37 @@ a:hover {
     background-color: #1F2833;
     border-radius: 10px;
     margin-bottom: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.253);
 }
 .allChute {
     background-color: #1F2833;
     border-radius: 10px;
     height: 600px;
+    border: 1px double rgba(255, 255, 255, 0.253);
+}
+.dashPicture {
+    height: 100px;
+    width: 100px;
+    border-radius: 20px;
+    padding: 10px;
+}
+.userName {
+    font-size: 30px;
+    padding-top: 15px;
+}
+.picCont {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.recText {
+    padding: 10px;
+}
+.recPost {
+    padding-left: 10px;
+    width: 200px;
+}
+.userEmail {
+    font-size: 13px;
+    font-weight: 100;
 }

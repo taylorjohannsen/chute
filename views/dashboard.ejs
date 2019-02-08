@@ -6,11 +6,15 @@
     </div>
   </a>
   <div class='navLink'>
-    <a class='noDec' href='/profile/<%= userid %>'>
+    <a class='noDec' href='/dashboard'>
+      <div class='linkText'>Dashboard</div>
+    </a>
+    <div> - </div>    
+    <a class='noDec' href='/profile/<%= user._id %>'>
       <div class='linkText'>Profile</div>
     </a>
     <div> - </div>
-    <a class='noDec' href='/account/<%= userid %>'>
+    <a class='noDec' href='/account/<%= user._id %>'>
       <div class='linkText'>Account</div>
     </a>
     <div> - </div>
@@ -21,7 +25,21 @@
 </div>
 <div class='botBorder'></div>
 <div class='mainCont'>
-  <div class='meCont'></div>
+  <div class='meCont'>
+    <div class='picCont'>
+      <img class='dashPicture' src="<%= user.image %>">
+      <div class='user'>
+        <div class='userName'><%= user.name %></div>    
+        <div class='userEmail'><%= user.email %></div>        
+      </div>
+    </div>
+    <div class="recText">Recent Posts:</div>
+    <% userposts.forEach(function(post) { %>
+      <a class='noDec' href='/post/<%= post._id %>'>  
+        <div class='recPost'><%= post.title %> - <%= post.date.toDateString(); %></div>
+      </a>
+    <% }); %>
+  </div>
   <div class='content'>
     <div class='newChute'></div>
     <div class="allChute"></div>

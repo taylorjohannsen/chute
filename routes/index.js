@@ -36,7 +36,9 @@ router.get('/post/:id', ensureAuthenticated, (req, res) => {
 router.get('/profile/:id', ensureAuthenticated, (req, res) => {
     User.findOne({ _id: req.params.id }).exec((err, user) => {
         Post.find({ user: user }).sort({date: -1}).exec((err, posts) => {
-            res.render('profile', { user: user, posts: posts})
+            User.findOne({ _id: req.user.id }).exec((err, session) => {
+                res.render('profile', { user: user, posts: posts, session: session})
+            })
         });
     });
 });

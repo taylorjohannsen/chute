@@ -44,12 +44,14 @@ input {
     padding-left: 10px;
     background-color: #0b0c10;
     color: white;
+    transition: 0.2s ease all;
 }
 input:focus {
     border: 0.5px solid black;
     box-shadow: 5x 5px black;
     outline: 0;
     background-color: rgba(189, 185, 185, 0.185);
+    transition: 0.2s ease all;
 }
 button {
     background-color: #35393C;
@@ -59,6 +61,7 @@ button {
     outline: 0;
     color: white;
     font-size: 18px;
+    transition: 0.3s ease all;
 }
 button:hover {
     transition: 0.3s ease all;
@@ -299,6 +302,7 @@ a:hover {
 .userEmail {
     font-size: 13px;
     font-weight: 100;
+    color: rgba(128, 128, 128, 0.726);
 }
 .form-group {
     padding-left: 10px;
@@ -318,6 +322,7 @@ a:hover {
     padding-left: 10px;
     background-color: #0b0c10;
     color: white;
+    transition: 0.2s ease all;
 }
 .submitPost {
     float: right;
@@ -330,6 +335,7 @@ a:hover {
     box-shadow: 5x 5px black;
     outline: 0;
     background-color: rgba(189, 185, 185, 0.185);
+    transition: 0.2s ease all;
 }
 .chuteText {
     font-size: 15px;
@@ -337,13 +343,13 @@ a:hover {
 }
 .underLine {
     border-bottom: 0.5px solid rgba(255, 255, 255, 0.479);
-    padding-bottom: 10px;
-    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-top: 20px;
     margin-left: 5px;
     text-overflow: ellipsis;
     overflow: hidden;
-    margin-bottom: 10px;
 }
+
 .eachPost {
     padding: 15px;
     overflow: hidden;
@@ -430,6 +436,14 @@ a:hover {
     font-size: 15px;
     background-color: #0b0c10;
     color: white;
+    transition: 0.2s ease all;
+}
+.commBody:focus {
+    transition: 0.2s ease all;
+    border: 0.5px solid black;
+    box-shadow: 5x 5px black;
+    outline: 0;
+    background-color: rgba(189, 185, 185, 0.185);
 }
 .commForm {
     padding: 10px;

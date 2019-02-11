@@ -1,0 +1,20 @@
+<a href="/dashboard">Go back</a>
+<h1>Your Profile:</h1>
+<% include ./partials/messages %>
+<img class='profPicture' src="<%= user.image %>">
+<h1><%= user.name %></h1>
+<p><%= user.password %></p>
+<p><%= user.email %></p>
+<p><%= user._id %></p>
+<p><%= user.desc %></p>
+
+<p>My Posts: </p>
+<% posts.forEach(function(post) { %>
+    <a href='/post/<%= post._id %>'>  
+      <h1><%= post.title %></h1>
+    </a>
+    <p><%= post.body %></p>
+    <p><%= post.date.toDateString(); %></p>
+    <p><a href='profile/<%= post.user._id %>'><%= post.user.name %></a></p>
+  <% }); %>
+   

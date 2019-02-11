@@ -31,7 +31,9 @@
         <img class='dashPicture' src="<%= user.image %>">
       </a>
       <div class='user'>
-        <div class='userName'><%= user.name %></div>    
+        <a class='noDec' href='/profile/<%= user._id %>'>
+          <div class='userName'><%= user.name %></div>
+        </a>    
         <div class='userEmail'><%= user.email %></div>        
       </div>
     </div>

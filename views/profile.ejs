@@ -1,20 +1,51 @@
-<a href="/dashboard">Go back</a>
-<h1>Your Profile:</h1>
-<% include ./partials/messages %>
-<img class='profPicture' src="<%= user.image %>">
-<h1><%= user.name %></h1>
-<p><%= user.password %></p>
-<p><%= user.email %></p>
-<p><%= user._id %></p>
-<p><%= user.desc %></p>
-
-<p>My Posts: </p>
-<% posts.forEach(function(post) { %>
-    <a href='/post/<%= post._id %>'>  
-      <h1><%= post.title %></h1>
+<div class="navBar">
+    <a href='/' class='noDec'>
+      <div class="dashLogo">
+          <img class="dashIcon" src='../public/watericon.png'>
+          <div class='dashText'>chute</div>
+      </div>
     </a>
-    <p><%= post.body %></p>
-    <p><%= post.date.toDateString(); %></p>
-    <p><a href='profile/<%= post.user._id %>'><%= post.user.name %></a></p>
+    <div class='navLink'>
+      <a class='noDec' href='/dashboard'>
+        <div class='linkText'>Dashboard</div>
+      </a>
+      <div> - </div>    
+      <a class='noDec' href='/profile/<%= session._id %>'>
+        <div class='linkText'>Profile</div>
+      </a>
+      <div> - </div>
+      <a class='noDec' href='/account/<%= session._id %>'>
+        <div class='linkText'>Account</div>
+      </a>
+      <div> - </div>
+      <a class='noDec' href='/users/logout'>
+        <div class='linkText'>Logout</div>
+      </a>
+    </div>
+  </div>
+<div class='botBorder'></div>
+
+
+
+<div class='allFlex'>
+    <% posts.forEach(function(post) { %>
+    <div class="allChute">
+      <div class='eachPost'>
+        <div class="columnFlex">
+          <a class='noDec' href='/profile/<%= user._id %>'>
+            <img class='postPicture' src="<%= user.image %>">
+          </a>
+          <a class='noDec' href='profile/<%= post.user._id %>'><%= user.name %></a>
+          <div><%= post.date.toDateString(); %></div>    
+        </div>
+          <div class="columnFlex postBody">
+            <a class='noDec' href='/post/<%= post._id %>'>  
+              <div class='postTitle'><%= post.title %></div>
+            </a>
+            <div class='overFlow'><%= post.body %></div>
+            <div class='totalCom'>Comments: <br><%= post.comments.length; %></div>
+          </div>
+      </div>
+    </div>
   <% }); %>
-   
+</div>

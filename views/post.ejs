@@ -55,10 +55,10 @@
     <% post.comments.forEach(function(comment) { %>
           <div class='eachPost aBorder'>
             <div class="columnFlex">
-              <a class='noDec' href='/profile/<%= post.user._id %>'>
-                <img class='commPicture' src="<%= post.user.image %>">
+              <a class='noDec' href='/profile/<%= comment.author._id %>'>
+                <img class='commPicture' src="<%= comment.author.image %>">
               </a>
-              <a class='noDec' href='/profile/<%= post.user._id %>'><%= comment.author.name %></a>
+              <a class='noDec' href='/profile/<%= comment.author._id %>'><%= comment.author.name %></a>
             </div>
               <div class="columnFlex postPageBody">
                 <div class='commentDate'><%= comment.timestamp.toDateString(); %></div>

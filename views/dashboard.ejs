@@ -45,6 +45,7 @@
   <div class='content'>
     <div class='newChute'>
       <div class="chuteText">new chute:</div>
+      <% include ./partials/messages %>
       <form class='formSub' action='/users/post' method="POST">
         <div class="form-group">
             <input type="text" id="title" name="title" class="formTitle" placeholder="Chute Title" autocomplete="off"/>

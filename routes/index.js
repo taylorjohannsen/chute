@@ -14,7 +14,7 @@ router.get('/', toMainpage, (req, res) => {
 // user dashboard page
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
     User.findOne({ _id: req.user.id }).populate('posts').exec((err, user) => {
-        Post.find({}).populate('user').sort({date: -1}).limit(20).exec((err, posts) => {
+        Post.find({}).populate('user').sort({date: -1}).limit(15).exec((err, posts) => {
             Post.find({ user: user }).sort({date: -1}).limit(4).exec((err, userposts) => {
                 res.render('dashboard', {posts: posts, user: user, userposts: userposts});
             });
@@ -24,11 +24,12 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
 
 // new post page
 router.get('/post/:id', ensureAuthenticated, (req, res) => {
-    Post.findOne({ _id: req.params.id })
-    .populate('comments.author').populate('user').sort({date: -1}).exec((err, post) => {
-        if (err) throw err;
-        res.render('post', post);
-    });
+    User.findOne({ _id: req.user.id }).exec((err, user) => {
+        Post.findOne({ _id: req.params.id }).populate('comments.author').populate('user').sort({date: -1}).exec((err, post) => {
+            if (err) throw err;
+            res.render('post', {post: post, session: user});
+        });
+    })
 });
 
 // profile page

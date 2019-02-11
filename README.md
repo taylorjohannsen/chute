@@ -1,5 +1,5 @@
 # chute
-This is a forum type website that is using the following technology:
+This is a forum type (crud) website that is using the following technology:
 - HTML/CSS
 - Vanilla JS
 - Node.JS / Express.JS

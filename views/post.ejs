@@ -1,29 +1,82 @@
-    <a href="/dashboard">Go back</a>
-    <h1>New Post:</h1>
-    <h1><%= title %></h1>
-    <p><%= body %></p>
-    <img class='profPicture' src="<%= user.image %>">
-    <a href="/profile/<%= user._id %>"><%= user.name %></a>
-    <% include ./partials/messages %>
-    <form action="/users/comment/<%= _id %>" method="POST">
-        <div class="form-group">
-          <input
-            type="text"
-            id="content"
-            name="content"
-            class="form-control"
-            placeholder="add comment.."
-          />
+<div class="navBar">
+  <a href='/' class='noDec'>
+    <div class="dashLogo">
+        <img class="dashIcon" src='../public/watericon.png'>
+        <div class='dashText'>chute</div>
+    </div>
+  </a>
+  <div class='navLink'>
+    <a class='noDec' href='/dashboard'>
+      <div class='linkText'>Dashboard</div>
+    </a>
+    <div> - </div>    
+    <a class='noDec' href='/profile/<%= session._id %>'>
+      <div class='linkText'>Profile</div>
+    </a>
+    <div> - </div>
+    <a class='noDec' href='/account/<%= session._id %>'>
+      <div class='linkText'>Account</div>
+    </a>
+    <div> - </div>
+    <a class='noDec' href='/users/logout'>
+      <div class='linkText'>Logout</div>
+    </a>
+  </div>
+</div>
+<div class='botBorder'></div>
+<div class='postContainer'>
+    <div class='eachPost'>
+      <div class="columnFlex">
+        <a class='noDec' href='/profile/<%= post.user._id %>'>
+          <img class='postPagePicture' src="<%= post.user.image %>">
+        </a>
+        <a class='noDec' href='/profile/<%= post.user._id %>'><%= post.user.name %></a>
+        <div><%= post.date.toDateString(); %></div>    
+      </div>
+        <div class="columnFlex postPageBody">
+          <div class='postPageTitle'><%= post.title %></div>
+          <div class='postFlow'><%= post.body %></div>
         </div>
-        <button type="submit" class="btn btn-primary btn-block">
-          Submit Comment
-        </button>
-    </form>
-    <% comments.forEach(function(comment) { %>
-      <h1><%= comment.content %></h1>
-      <img class='profPicture' src="<%= comment.author.image %>">
-      <a href="/profile/<%= comment.author._id %>"><%= comment.author.name %></a>
-      <p><%= comment.timestamp.toDateString(); %></p>
+    </div>
+</div>
+<div class='formCont'>
+  <% include ./partials/messages %>
+  <form action="/users/comment/<%= post._id %>" method="POST">
+    <div class="commForm">
+      <textarea class='commBody' type="text" id="content" name="content" class="form-control" placeholder="add comment.." autocomplete="off"></textarea>
+    </div>
+    <button class='submitCom' type="submit" class="btn btn-primary btn-block">
+      Submit Comment
+    </button>
+  </form>
+</div>
+<div class='commentCont'>
+  <div class="allChute">
+    <% post.comments.forEach(function(comment) { %>
+          <div class='eachPost aBorder'>
+            <div class="columnFlex">
+              <a class='noDec' href='/profile/<%= post.user._id %>'>
+                <img class='commPicture' src="<%= post.user.image %>">
+              </a>
+              <a class='noDec' href='/profile/<%= post.user._id %>'><%= comment.author.name %></a>
+            </div>
+              <div class="columnFlex postPageBody">
+                <div class='commentDate'><%= comment.timestamp.toDateString(); %></div>
+                <br>    
+                <div class='commentCont'><%= comment.content %></div>
+              </div>
+          </div>
     <% }); %>
-     
-
+  </div>
+</div>
+<div class='formCont'>
+  <% include ./partials/messages %>
+  <form action="/users/comment/<%= post._id %>" method="POST">
+    <div class="commForm">
+      <textarea class='commBody' type="text" id="content" name="content" class="form-control" placeholder="add comment.." autocomplete="off"></textarea>
+    </div>
+    <button class='submitCom' type="submit" class="btn btn-primary btn-block">
+      Submit Comment
+    </button>
+  </form>
+</div>

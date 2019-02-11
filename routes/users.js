@@ -164,7 +164,7 @@ function checkFileType(file, cb) {
 // submit photo handle
 router.post('/upload', (req, res, next) => {
     upload(req, res, (err) => {
-        if (err) {
+        if (err || !req.file) {
             req.flash('photoerror', 'Incorrect file type - .jpeg, .png, .jpg, .gif only ');
             res.redirect('back');
         } else {

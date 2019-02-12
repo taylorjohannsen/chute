@@ -45,6 +45,17 @@
             <div class='overFlow'><%= post.body %></div>
             <div class='totalCom'>Comments: <br><%= post.comments.length; %></div>
           </div>
+          <% let thisSession = session._id.toString(); %>
+          <% let thisPost = post.user._id.toString(); %>
+          <% if(thisSession == thisPost) { %>
+            <div class='filler'>
+              <form action='/users/deletepost/<%= post._id %>' method="POST">
+                <button class='deletePost' type="submit">Delete</button>
+              </form>    
+            </div>
+         <% } else { %>
+           <div class='filler'></div>
+         <% } %>
       </div>
     </div>
   <% }); %>

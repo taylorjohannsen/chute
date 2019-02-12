@@ -10,11 +10,11 @@
       <div class='linkText'>Dashboard</div>
     </a>
     <div> - </div>    
-    <a class='noDec' href='/profile/<%= user._id %>'>
+    <a class='noDec' href='/profile/<%= session._id %>'>
       <div class='linkText'>Profile</div>
     </a>
     <div> - </div>
-    <a class='noDec' href='/account/<%= user._id %>'>
+    <a class='noDec' href='/account/<%= session._id %>'>
       <div class='linkText'>Account</div>
     </a>
     <div> - </div>
@@ -27,14 +27,14 @@
 <div class='mainCont'>
   <div class='meCont'>
     <div class='picCont'>
-      <a class='noDec' href='/profile/<%= user._id %>'>
-        <img class='dashPicture' src="<%= user.image %>">
+      <a class='noDec' href='/profile/<%= session._id %>'>
+        <img class='dashPicture' src="<%= session.image %>">
       </a>
       <div class='user'>
-        <a class='noDec' href='/profile/<%= user._id %>'>
-          <div class='userName'><%= user.name %></div>
+        <a class='noDec' href='/profile/<%= session._id %>'>
+          <div class='userName'><%= session.name %></div>
         </a>    
-        <div class='userEmail'><%= user.email %></div>        
+        <div class='userEmail'><%= session.email %></div>        
       </div>
     </div>
     <div class="recText">Recent Chutes:</div>
@@ -80,6 +80,17 @@
             <div class='overFlow'><%= post.body %></div>
             <div class='totalCom'>Comments: <br><%= post.comments.length; %></div>
           </div>
+          <% let thisSession = session._id.toString(); %>
+          <% let thisPost = post.user._id.toString(); %>
+          <% if(thisSession == thisPost) { %>
+            <div class='filler'>
+              <form action='/users/deletepost/<%= post._id %>' method="POST">
+                <button class='deletePost' type="submit">Delete</button>
+              </form>    
+            </div>
+         <% } else { %>
+           <div class='filler'></div>
+         <% } %>
       </div>
     </div>
   <% }); %>

@@ -194,6 +194,24 @@ router.post('/update', (req, res, next) => {
         });
 });
 
+// delete post handle 
+router.post('/deletepost/:id', (req, res, next) => {
+    Post.findOne({ _id: req.params.id }).populate('user').exec((err, post) => {
+
+        let thisSession = req.user._id.toString();
+        let thisPost = post.user._id.toString();
+
+        if (thisSession == thisPost) {
+            Post.deleteOne({ _id: post._id }, function(err) {
+                if (err) return handleError(err);
+                res.redirect('/dashboard');
+            })
+        } else {
+            res.redirect('/dashboard');
+        };
+    })
+})
+
 // login handle 
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', {
@@ -209,5 +227,6 @@ router.get('/logout', (req, res) => {
     req.flash('success_msg', 'You are logged out');
     res.redirect('/users/login');
 });
+
 
 module.exports = router;

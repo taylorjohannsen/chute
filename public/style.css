@@ -491,3 +491,43 @@ a:hover {
 textarea {    
     font-family: 'Noto Sans JP', sans-serif;
 }
+.Posts {
+    font-size: 30px;
+    margin-left: 10%;
+    margin-bottom: 20px;
+}
+.profPost {
+    padding: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(0, 0, 0);
+}
+.profPostCont {
+    background-color: #1F2833;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.253);
+    margin-right: 20%;
+    margin-left: 20%;
+    margin-bottom: 50px;
+}
+.myDesc {
+    font-size: 17px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+}
+.profName {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 40px;
+    background-color: rgba(0, 0, 0, 0.767);
+    border: 1px solid white;
+    width: 30%;
+    overflow: hidden;
+    padding: 10px;
+}
+.rFlex {
+    display: flex;
+    justify-content: center;
+}

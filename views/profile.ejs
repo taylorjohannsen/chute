@@ -24,10 +24,25 @@
     </div>
   </div>
 <div class='botBorder'></div>
-
-
-
+<div class='rFlex'>
+  <div class="profName"><%= user.name %></div>
+</div>
+<div class='profPostCont'>
+    <div class='profPost'>
+      <div class="columnFlex">
+        <a class='noDec' href='/profile/<%= user._id %>'>
+          <img class='postPagePicture' src="<%= user.image %>">
+        </a>
+        <a class='noDec' href='/profile/<%= user._id %>'><%= user.name %></a>
+      </div>
+      <div class='myDesc'>
+          <div>About me:</div>
+          <br>
+          <%= user.desc %></div>
+    </div>
+</div>
 <div class='allFlex'>
+  <div class='Posts'> <%= user.name %>'s Chutes:</div>
     <% posts.forEach(function(post) { %>
     <div class="allChute">
       <div class='eachPost'>

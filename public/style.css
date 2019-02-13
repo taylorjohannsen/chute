@@ -285,6 +285,7 @@ a:hover {
 .userName {
     font-size: 30px;
     padding-top: 15px;
+    padding-left: 10px;
 }
 .picCont {
     display: flex;
@@ -303,6 +304,7 @@ a:hover {
     font-size: 13px;
     font-weight: 100;
     color: rgba(128, 128, 128, 0.726);
+    padding-left: 10px;
 }
 .form-group {
     padding-left: 10px;

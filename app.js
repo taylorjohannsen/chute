@@ -15,6 +15,7 @@ const app = express();
 // css and client side js
 app.use('/public', express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, 'public')));
+app.set('pictures', path.join(__dirname, 'public/pictures'));
 
 // mongodb
 mongoose.connect(db.MongoURI, { useNewUrlParser: true })
@@ -63,4 +64,4 @@ app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 
 
-app.listen(3000, console.log('Server started on port 3000'));
+app.listen(7000, console.log('Server started on port 3000'));

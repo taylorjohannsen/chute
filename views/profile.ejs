@@ -36,6 +36,7 @@
         <a class='noDec' href='/profile/<%= user._id %>'><%= user.name %></a>
       </div>
       <div class='myDesc'>
+          <% include ./partials/messages %>
           <div>About me:</div>
           <br>
           <%= user.desc %></div>
@@ -50,7 +51,7 @@
           <a class='noDec' href='/profile/<%= user._id %>'>
             <img class='postPicture' src="<%= user.image %>">
           </a>
-          <a class='noDec' href='profile/<%= post.user._id %>'><%= user.name %></a>
+          <a class='noDec' href='/profile/<%= post.user._id %>'><%= user.name %></a>
           <div><%= post.date.toDateString(); %></div>    
         </div>
           <div class="columnFlex postBody">

@@ -1,28 +1,50 @@
-<a href="/dashboard">Go back</a>
-
-<% include ./partials/messages %>
-<form action="/users/upload" method="POST" enctype="multipart/form-data">
-  <div class="file-field input-field">
-    <div class="btn grey">
-      <span>Image</span>
-      <input name="myImage" type="file">
+<div class="navBar">
+    <a href='/' class='noDec'>
+      <div class="dashLogo">
+          <img class="dashIcon" src='../public/watericon.png'>
+          <div class='dashText'>chute</div>
+      </div>
+    </a>
+    <div class='navLink'>
+      <a class='noDec' href='/dashboard'>
+        <div class='linkText'>Dashboard</div>
+      </a>
+      <div> - </div>    
+      <a class='noDec' href='/profile/<%= session._id %>'>
+        <div class='linkText'>Profile</div>
+      </a>
+      <div> - </div>
+      <a class='noDec' href='/account/<%= session._id %>'>
+        <div class='linkText'>Account</div>
+      </a>
+      <div> - </div>
+      <a class='noDec' href='/users/logout'>
+        <div class='linkText'>Logout</div>
+      </a>
     </div>
   </div>
-  <button type="submit" class="btn">Submit</button>
-</form>
-
-<form action="/users/update" method="POST">
-  <div class="form-group">
-    <span>Edit description: </span>
-    <input
-      type="text"
-      id="desc"
-      name="desc"
-      class="form-control"
-      value="<%= desc %>"
-    >
+<div class='botBorder'></div>
+<div class='settings'>Account Settings: </div>
+<div class='profPostCont'>
+  <div class='accCont'>
+      <% include ./partials/messages %>
+      <form class='imageUpload' action="/users/upload" method="POST" enctype="multipart/form-data">
+        <div>
+          <div class="">
+            <span>Profile Picture - </span>
+            <input name="myImage" type="file">
+            <button type="submit" class="Submit Top">Upload</button>
+          </div>
+        </div>
+      </form>
+      <form action="/users/update" method="POST">
+        <div >
+          <span>Edit description: </span>
+          <textarea class='accBody' type="text" id="desc" name="desc" value="<%= session.desc %>"><%= session.desc %></textarea>
+        </div>
+        <button type="submit" class="submit">
+          Update Description
+        </button>
+      </form>
   </div>
-  <button type="submit" class="btn btn-primary btn-block">
-    Submit
-  </button>
-</form>
+</div>

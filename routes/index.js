@@ -29,7 +29,7 @@ router.get('/post/:id', ensureAuthenticated, (req, res) => {
             if (err) throw err;
             res.render('post', {post: post, session: user});
         });
-    })
+    });
 });
 
 // profile page
@@ -37,8 +37,8 @@ router.get('/profile/:id', ensureAuthenticated, (req, res) => {
     User.findOne({ _id: req.params.id }).exec((err, user) => {
         Post.find({ user: user }).sort({date: -1}).exec((err, posts) => {
             User.findOne({ _id: req.user.id }).exec((err, session) => {
-                res.render('profile', { user: user, posts: posts, session: session})
-            })
+                res.render('profile', { user: user, posts: posts, session: session })
+            });
         });
     });
 });
@@ -47,7 +47,7 @@ router.get('/profile/:id', ensureAuthenticated, (req, res) => {
 router.get('/account/:id', ensureAuthenticated, (req, res) => {
     User.findOne({ _id: req.params.id }).exec((err, user) => {
         if (err) throw err;
-        res.render('account', user);
+        res.render('account', { session: user });
     });
 });
 

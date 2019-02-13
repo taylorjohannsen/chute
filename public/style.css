@@ -264,8 +264,8 @@ a:hover {
 }
 .allChute {
     overflow: hidden;
-    width: 100%;
     margin-bottom: 10px;
+    width: 100%;
     border: 6px solid #1F2833;
     border-radius: 10px;
 }
@@ -561,7 +561,7 @@ textarea {
 }
 .imageUpload {
     border-bottom: 1px solid white;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
 }
 .Top {
     margin-left: 10px;
@@ -570,4 +570,103 @@ textarea {
     font-size: 30px;
     margin-left: 25%;
     margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 800px) {
+    .container {
+        margin-left: 1%;
+        margin-right: 1%;
+    }
+    .mainCont {
+        margin-top: 20px;
+        flex-direction: column;
+    }
+    .navBar {
+        flex-direction: column;
+    }
+    .navLink {
+        flex-wrap: wrap;
+    }
+    .meCont {
+        margin-top: 60px;
+        width: 100%;
+    }
+    .content {
+        margin-top: 10px;
+        width: 100%;
+    }
+    .formBody {
+        margin-right: 5px;
+        width: 90%;
+    }
+    .eachPost {
+        flex-wrap: wrap;
+    }
+    .postBody {
+        margin-top: 20px;
+    }
+    .postTitle {
+        word-wrap: wrap;
+    }
+    .deletePost {
+        float: left;
+    }
+    .allFlex {
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+    .allChute {
+        width: 95%;
+    }
+    .rFlex {
+        padding-top: 40px;
+    }
+    .profPost {
+        flex-wrap: wrap;
+    }
+    .profPostCont {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    .settings {
+        padding-top: 30px;
+    }
+    .accCont {
+        padding: 5px;
+    }
+    .accBody {
+        width: 95%;
+    }
+    .fileUp {
+        width: 80%;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+    }
+    .mainText {
+        font-size: 20px;
+    }
+    .smallText {
+        font-size: 15px;
+    }
+    .loginCont {
+        width: 98%;
+        padding: 5px;
+    }
+    .loginFlex {
+        margin-left: 3%;
+        margin-right: 3%;
+    }
+    input {
+        width: 90%;
+    }
+    .formCont {
+        margin-left: 1%;
+        margin-right: 1%;
+    }
+    .postContainer {
+        margin-top: 90px;
+        margin-left: 1%;
+        margin-right: 1%;
+    }
+
 }

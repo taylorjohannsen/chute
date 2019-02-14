@@ -59,7 +59,9 @@
               <div class='postTitle'><%= post.title %></div>
             </a>
             <div class='overFlow'><%= post.body %></div>
-            <div class='totalCom'>Comments: <br><%= post.comments.length; %></div>
+            <a class='noDec' href='/post/<%= post._id %>'>  
+              <div class='totalCom'>Comments: <br><%= post.comments.length; %></div>
+            </a>
           </div>
           <% let thisSession = session._id.toString(); %>
           <% let thisPost = post.user._id.toString(); %>
